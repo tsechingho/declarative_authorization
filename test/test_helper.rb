@@ -1,17 +1,17 @@
 require 'test/unit'
 require 'pathname'
 
-unless defined?(RAILS_ROOT)
-  RAILS_ROOT = ENV['RAILS_ROOT'] ?
-      ENV['RAILS_ROOT'] + "" :
+unless defined?(Rails.root)
+  Rails.root = ENV['Rails.root'] ?
+      ENV['Rails.root'] + "" :
       File.join(File.dirname(__FILE__), %w{.. .. .. ..})
 end
 
 unless defined?(ActiveRecord)
-  if File.directory? RAILS_ROOT + '/config'
+  if File.directory? Rails.root + '/config'
     puts 'Using config/boot.rb'
     ENV['RAILS_ENV'] = 'test'
-    require File.join(RAILS_ROOT, 'config', 'environment.rb')
+    require File.join(Rails.root, 'config', 'environment.rb')
   else
     # simply use installed gems if available
     version_requirement = ENV['RAILS_VERSION'] ? "= #{ENV['RAILS_VERSION']}" : "> 2.1.0"
