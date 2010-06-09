@@ -1,3 +1,5 @@
+require 'active_record'
+require 'active_controller'
 require File.join(%w{declarative_authorization rails_legacy})
 require File.join(%w{declarative_authorization helper})
 require File.join(%w{declarative_authorization in_controller})
